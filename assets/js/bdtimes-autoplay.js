@@ -14,11 +14,11 @@
                 // let html = `<iframe id="bdtap" width="560" height="315" src="https://www.youtube.com/embed/MgSSv0MzA84?rel=0&autoplay=1&enable_js=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 let html = `<div id="yt-player"></div>`;
 
-                content.html(html);
 
                 // jQuery('iframe#bdtap')[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-
-                if (data.data) {
+                // console.log(data.data.length);
+                if (data.data.length > 0) {
+                    content.html(html);
 
                     if (window.location.href == baseUrl) {
 
