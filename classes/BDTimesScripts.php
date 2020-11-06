@@ -1,10 +1,10 @@
 <?php
-namespace BDTAP;
+namespace A2ZTRADE;
 
 
-if (!class_exists('BDTimesScripts')) {
+if (!class_exists('A2ZScripts')) {
 
-    class BDTimesScripts
+    class A2ZScripts
     {
 
         public $register_styles = [];

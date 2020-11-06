@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: BD TIMES 
+Plugin Name: A2z trade product management
 Plugin URI:
 Description:
-Author: Sagar
+Author: Sagar Dash
 Version: 1.6.0
 Author URI: sagardash.com
 Requires at least: 4.5
@@ -12,53 +12,57 @@ License: GPLv2 or later
 Text Domain: wpet
  */
 
-if (!defined('BDTAP_HACK_MSG')) {
-    define('BDTAP_HACK_MSG', __('Sorry cowboy! This is not your place', 'WPET'));
+if (!defined('A2ZTRADE_HACK_MSG')) {
+    define('A2ZTRADE_HACK_MSG', __('Sorry cowboy! This is not your place', 'WPET'));
 }
 
 /**
  * Protect direct access
  */
 if (!defined('ABSPATH')) {
-    die(BDTAP_HACK_MSG);
+    die(A2ZTRADE_HACK_MSG);
 }
 
 /**
  * Defining constants
  */
 $prefix = "bdtap";
-if (!defined('BDTAP_PREFIX')) {
-    define('BDTAP_PREFIX', $prefix);
+if (!defined('A2ZTRADE_PREFIX')) {
+    define('A2ZTRADE_PREFIX', $prefix);
 }
 
-if (!defined('BDTAP_VERSION')) {
-    define('BDTAP_VERSION', '1.0.0');
+if (!defined('A2ZTRADE_VERSION')) {
+    define('A2ZTRADE_VERSION', '1.0.0');
 }
 
-if (!defined('BDTAP_MENU_POSITION')) {
-    define('BDTAP_MENU_POSITION', 5);
+if (!defined('A2ZTRADE_MENU_POSITION')) {
+    define('A2ZTRADE_MENU_POSITION', 5);
 }
 
-if (!defined('BDTAP_PLUGIN_DIR')) {
-    define('BDTAP_PLUGIN_DIR', plugin_dir_path(__FILE__));
+if (!defined('A2ZTRADE_PLUGIN_DIR')) {
+    define('A2ZTRADE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 }
 
-if (!defined('BDTAP_PLUGIN_URI')) {
-    define('BDTAP_PLUGIN_URI', plugins_url('', __FILE__));
+if (!defined('A2ZTRADE_PLUGIN_URI')) {
+    define('A2ZTRADE_PLUGIN_URI', plugins_url('', __FILE__));
 }
 
-if (!defined('BDTAP_FILES_DIR')) {
-    define('BDTAP_FILES_DIR', BDTAP_PLUGIN_DIR . 'assets');
+if (!defined('A2ZTRADE_FILES_DIR')) {
+    define('A2ZTRADE_FILES_DIR', A2ZTRADE_PLUGIN_DIR . 'assets');
 }
 
-if (!defined('BDTAP_FILES_URI')) {
-    define('BDTAP_FILES_URI', BDTAP_PLUGIN_URI . '/assets');
+if (!defined('A2ZTRADE_FILES_URI')) {
+    define('A2ZTRADE_FILES_URI', A2ZTRADE_PLUGIN_URI . '/assets');
 }
 
+// require_once( ABSPATH . '/wp-admin/includes/plugin.php');
+// require_once( ABSPATH . '/wp-admin/includes/media.php');
+// require_once( ABSPATH . '/wp-admin/includes/file.php');
+// require_once( ABSPATH . '/wp-admin/includes/image.php');
 // autoloading class
 spl_autoload_register(function ($class) {
     // namespace prefix
-    $prefix = 'BDTAP\\';
+    $prefix = 'A2ZTRADE\\';
 
     // check if this is a class from our project
     $len = strlen($prefix);
@@ -85,6 +89,49 @@ spl_autoload_register(function ($class) {
     }
 });
 
+// media_sideload_image('https://www.dfshop.com/wsshop/Dipius/pict/0007204812.jpg', 10);
+
+add_action('init', 'do_stuff');
+function do_stuff()
+{
+
+    // ...
+}
+
+// function upload_image($url, $post_id)
+// {
+//     $image_url = $url;
+
+//     $upload_dir = wp_upload_dir();
+
+//     $image_data = file_get_contents($image_url);
+
+//     $filename = basename($image_url);
+
+//     if (wp_mkdir_p($upload_dir['path'])) {
+//         $file = $upload_dir['path'] . '/' . $filename;
+//     } else {
+//         $file = $upload_dir['basedir'] . '/' . $filename;
+//     }
+
+//     file_put_contents($file, $image_data);
+
+//     $wp_filetype = wp_check_filetype($filename, null);
+
+//     $attachment = array(
+//         'post_mime_type' => $wp_filetype['type'],
+//         'post_title' => sanitize_file_name($filename),
+//         'post_content' => '',
+//         'post_status' => 'inherit',
+//     );
+
+//     $attach_id = wp_insert_attachment($attachment, $file);
+//     require_once ABSPATH . 'wp-admin/includes/image.php';
+//     $attach_data = wp_generate_attachment_metadata($attach_id, $file);
+//     wp_update_attachment_metadata($attach_id, $attach_data);
+// }
+
+// upload_image('https://www.dfshop.com/wsshop/Dipius/pict/0007204812.jpg', 10);
 // instatiate class
-new BDTAP\BDTimesRestApi();
-new BDTAP\BDTimesScripts();
+new A2ZTRADE\A2ZRestApi();
+// new A2ZTRADE\BDTimesScripts();
